@@ -3,7 +3,7 @@ name: Automated deployments to AWS S3
 on: # trigger
   push: # jab push ho
     branches: # on these branches
-      - master
+      - main
 
 jobs: # to ye jobs run krni hain
   build-and-deploy: # job name
