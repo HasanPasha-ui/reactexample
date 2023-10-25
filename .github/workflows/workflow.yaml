@@ -31,10 +31,11 @@ jobs: # to ye jobs run krni hain
       - name: show files
         run: ls build # will display all build files
 
-      # upload build files to s3 bucket
+      # upload build files to s3 bucket m
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.ACCESS_KEY }} # 2. access id
           aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }} # 3. secret key
           aws_bucket: ${{ secrets.BUCKET_NAME }} # 1. bucket name
           source_dir: build
+          destination_dir: '' # will upload to root of bucket
