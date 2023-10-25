@@ -1,0 +1,32 @@
+name: Automated deployments to AWS S3
+
+on: # trigger
+  push: # jab push ho
+    branches: # on these branches
+      - master
+
+jobs: # to ye jobs run krni hain
+  build-and-deploy: # job name
+    runs-on: ubuntu-latest #  what OS to use for the instance
+    steps: # steps of this job
+      # step 1: clone repository
+      - uses: actions/checkout@v3
+
+      # step 2: install specific version of nodejs
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.20.0'
+
+      - name: checking node version
+        run: node -v # simply will print the current nodejs version
+
+      # step 3: install dependencies using npm install
+      - name: install dependencies
+        run: npm install
+
+      # step 4: generate build
+      - name: Build
+        run: npm run build
+
+      - name: show files
+        run: ls build # will display all build files
